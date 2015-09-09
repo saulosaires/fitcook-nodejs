@@ -101,7 +101,11 @@ exports.update_profile = function(req,res) {
 							
 			if(err) throw err;
 
-			 res.write('{status:success,msg:profile_updated,result:'+result+'}');res.end();
+			 if(result>0){
+				res.write('{status:success,msg:profile_updated}');res.end();
+			 }else{
+				res.write('{status:fail,msg:none_updated}');res.end();
+			 }
 			 db.close();
 			 
 		})
