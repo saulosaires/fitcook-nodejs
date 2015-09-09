@@ -56,6 +56,5 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	
   });
   
-  
-  
+   
 });
