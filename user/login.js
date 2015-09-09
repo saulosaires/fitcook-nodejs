@@ -4,7 +4,6 @@ exports.login = function(req,res) {
 	  var name 	 = req.param("name");
 	  var photo  = req.param("photo");
 	  var email  = req.param("email");
-	  var deviceName  = req.param("deviceName");
       var deviceId  = req.param("deviceId");	   
 
 	  
@@ -102,7 +101,7 @@ exports.update_profile = function(req,res) {
 							
 			if(err) throw err;
 
-			 res.write('{status:success,msg:profile_updated}');res.end();
+			 res.write('{status:success,msg:profile_updated,result:'+result+'}');res.end();
 			 db.close();
 			 
 		})
