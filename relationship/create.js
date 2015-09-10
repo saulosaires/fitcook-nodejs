@@ -19,7 +19,7 @@ exports.create = function(req,res) {
 
 		var collection = db.collection('relationship');
 		  
-		collection.find( {'user':[user_1,user_2],'status:A'} ).limit(1).toArray(function(err, docs) {
+		collection.find( {'user':[user_1+','+user_2],'status:A'} ).limit(1).toArray(function(err, docs) {
 		
 			if(err) throw err;
 			

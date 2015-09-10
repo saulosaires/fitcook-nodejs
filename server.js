@@ -5,7 +5,7 @@ var mean = require('meanio');
 var url     = require('url');
 
 var user=require('./user/index');
-var group=require('./group/index');
+var relationship=require('./relationship/index');
 
 
 // Creates and serves mean application
@@ -37,13 +37,10 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 				user.retrieve(req,res);
 			break;	
 			
-			case '/api/groupCreate':
-				group.create(req,res);
+			case '/api/relationshipCreate':
+				relationship.create(req,res);
 			break;	
-			
-			case '/api/groupRetrieve':
-				group.retrieve(req,res);
-			break;	
+ 
  
 			
 			default:
