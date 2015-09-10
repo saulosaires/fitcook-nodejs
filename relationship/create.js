@@ -19,19 +19,17 @@ exports.create = function(req,res) {
 
 		var collection = db.collection('relationship');
 		  
-		collection.find( {'user':[user_1,user_2],'status:A'} ).limit(1).toArray(function(err, docs) {
-		
+		  		collection.insert([{'user':[user_1,user_2],
+							        'status':'A'
+						 }], function(err, result) {
+							
 			if(err) throw err;
-			
-			if (docs.length > 0){
-				exports.update_profile(req,res);
-			 }else{
-				exports.register_profile(req,res);
-			 }
 
-			db.close();
-		
+			 res.write('{status:success,msg:profile_registered}');res.end();
+			 db.close();
+			 
 		})
+	 
 
 	  })
  
