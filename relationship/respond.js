@@ -27,8 +27,9 @@ exports.respond = function(req,res) {
 }
 
  
-exports.relationship_update = function(uuid) {
+exports.relationship_update = function(req,res) {
  
+  var uuid = req.param("uuid");
 	    
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 		 
