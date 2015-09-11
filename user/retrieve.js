@@ -29,7 +29,7 @@ exports.retrieveByEmail = function(req,res) {
 			res.send("{}");
 			}
 			
-			res.send(docs);
+		 
 			res.end();
 			db.close();
 			

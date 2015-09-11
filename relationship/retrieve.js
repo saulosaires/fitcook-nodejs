@@ -23,9 +23,12 @@ exports.retrieve = function(req,res) {
 							
 			if(err) throw err;
 
-		 
-			
-			 res.write(result+'');res.end();
+		 if (result.length > 0){
+			res.send(result);
+			}else{
+			res.send("{}");
+			}
+			 res.end();
 			 db.close();
 			 
 		});
