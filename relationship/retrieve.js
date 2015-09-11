@@ -1,6 +1,6 @@
 var uuid = require('node-uuid');
 
-exports.send = function(req,res) {
+exports.retrieve = function(req,res) {
 	
 	var email = req.param("email");
 	    

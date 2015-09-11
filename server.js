@@ -55,6 +55,10 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
  			case '/api/relationshipDelete':
 				relationship.del(req,res);
 			break;		
+
+ 			case '/api/relationshipRetrieve':
+				relationship.retrieve(req,res);
+			break;	
 			
 			default:
 				res.write('default');

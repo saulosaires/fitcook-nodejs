@@ -3,6 +3,8 @@ var relation_send     = require('./send');
 var relation_respond  = require('./respond');
 var relation_block    = require('./block'); 
 var relation_delete   = require('./delete'); 
+var relation_retrieve   = require('./retrieve'); 
+ 
  
 exports.send = function(req,res) {
 	return relation_send.send(req,res);
@@ -18,4 +20,7 @@ exports.unblock = function(req,res) {
 } 
 exports.del = function(req,res) {
 	return relation_delete.del(req,res);
+} 
+exports.retrieve = function(req,res) {
+	return relation_retrieve.retrieve(req,res);
 } 
