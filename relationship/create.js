@@ -23,6 +23,10 @@ exports.create = function(req,res) {
 	    res.write('{status:error,msg:user_2_not_exist}');res.end();
 	  }
 
+	  if( user_1 == user_2 ){
+		res.write('{status:error,msg:user_1_and_user_2_eq}');res.end();
+	  }
+
 	  
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
