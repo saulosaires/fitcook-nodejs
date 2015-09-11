@@ -34,9 +34,8 @@ exports.relationship_update = function(uuid) {
 		 
 	    var collection = db.collection('relationship');
 		 
-		collection.update({'uuid':uuid,
+		collection.update({'uuid':uuid},
 						   {
- 
 							 'status':'O'
 						   }, function(err, result) {
 							
@@ -51,9 +50,5 @@ exports.relationship_update = function(uuid) {
 			 
 		})
 		   
-		 
-		 
-	})  
-   
-}		
-   
+    })
+}
