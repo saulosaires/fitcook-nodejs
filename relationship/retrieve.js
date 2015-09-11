@@ -23,6 +23,8 @@ exports.retrieve = function(req,res) {
 							
 			if(err) throw err;
 
+			console.log(result);
+			
 			 res.write(result);res.end();
 			 db.close();
 			 
