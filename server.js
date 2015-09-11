@@ -40,10 +40,14 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 			case '/api/relationshipSend':
 				relationship.send(req,res);
 			break;	
+			
  			case '/api/relationshipRespond':
 				relationship.respond(req,res);
 			break;	
  
+ 			case '/api/relationshipBlock':
+				relationship.block(req,res);
+			break;	
 			
 			default:
 				res.write('default');
