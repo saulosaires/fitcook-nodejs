@@ -18,6 +18,11 @@ exports.create = function(req,res) {
 	  if(typeof user_2 == 'undefined' || user_2 === null || user_2 === "null" ){
 		res.write('{status:error,msg:user_2_invalid}');res.end();
 	  }
+
+	  if(!exports.query_profile(user_2)){
+	    res.write('{status:error,msg:user_2_not_exist}');res.end();
+	  }
+
 	  
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
