@@ -50,7 +50,8 @@ exports.create = function(req,res) {
 
 exports.query_profile = function(email) {
  
-	    return email;
+	
+	
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 		 
 	    var collection = db.collection('user');
