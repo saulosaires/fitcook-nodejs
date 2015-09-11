@@ -2,32 +2,19 @@ var uuid = require('node-uuid');
 
 exports.respond = function(req,res) {
 	
-	  var user_1 = req.param("");
-	  var user_2 = req.param("user_2");
+	  var uuid = req.param("uuid");
+	  var respond = req.param("respond");
 	    
-	  if(typeof user_1 == 'undefined' || user_1 === null || user_1 === "null" ){
-		res.write('{status:error,msg:user_1_invalid}');res.end();return;
+	  if(typeof uuid == 'undefined' || uuid == null || uuid == "null" ){
+		res.write('{status:error,msg:uuid_invalid}');res.end();return;
 	  }
  
-	  if(exports.query_profile(user_1)==0){
-	    res.write('{status:error,msg:user_1_not_exist}');res.end();return;
-	  }
-	  
-	  
-	  
-	  if(typeof user_2 == 'undefined' || user_2 === null || user_2 === "null" ){
-		res.write('{status:error,msg:user_2_invalid}');res.end();return;
+	  if(typeof respond == 'undefined' || respond == null || respond == "null" || 
+	            respond!='y'           || respond!='n'    || respond!='Y'      || respond!='N'){
+		res.write('{status:error,msg:respond_invalid}');res.end();return;
 	  }
 
-	  if(exports.query_profile(user_2)==0){
-	    res.write('{status:error,msg:user_2_not_exist}');res.end();return;
-	  }
-
-	  if( user_1 == user_2 ){
-		res.write('{status:error,msg:user_1_and_user_2_eq}');res.end();return;
-	  }
-
-	  
+	 
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
 		if(err) throw err;
