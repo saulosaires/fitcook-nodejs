@@ -29,7 +29,7 @@ exports.retrieve = function(req,res) {
 			 res.end();
 			 db.close();
 			 
-		});
+		})
 	 
 
 	})
