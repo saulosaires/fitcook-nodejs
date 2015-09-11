@@ -1,5 +1,3 @@
-var uuid = require('node-uuid');
-
 exports.retrieve = function(req,res) {
 	
 	var email = req.param("email");
@@ -18,12 +16,9 @@ exports.retrieve = function(req,res) {
 		if(err) throw err;
 
 		var collection = db.collection('relationship');
-		  
-		var id= uuid.v1();
-		  
-		collection.find([{'user':{
-							      $elemMatch: {email}
-								  }
+	
+		collection.find([{
+							'user':{$elemMatch:email}
 					     }], function(err, result) {
 							
 			if(err) throw err;
