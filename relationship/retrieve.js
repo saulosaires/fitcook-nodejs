@@ -34,7 +34,6 @@ exports.retrieve = function(req,res) {
 
 	})
  
- 
 }
 
 exports.query_profile = function(email) {
