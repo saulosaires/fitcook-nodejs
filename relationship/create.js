@@ -9,6 +9,7 @@ exports.create = function(req,res) {
 		res.write('{status:error,msg:user_1_invalid}');res.end();
 	  }
 
+	   res.write(exports.query_profile(user_1));res.end();
 	  if(!exports.query_profile(user_1)){
 	    res.write('{status:error,msg:user_1_not_exist}');res.end();
 	  }
@@ -49,7 +50,7 @@ exports.create = function(req,res) {
 
 exports.query_profile = function(email) {
  
-	    
+	    return email;
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 		 
 	    var collection = db.collection('user');
