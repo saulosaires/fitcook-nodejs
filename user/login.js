@@ -116,28 +116,3 @@ exports.update_profile = function(req,res) {
    
 }		
 
-
-
-exports.default_group = function() {
-
-	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
-
-		  if(err) throw err;
-
-		  var collection = db.collection('group');
-		  var label = "My group";
-		  var id= uuid.v1();
-		  
-		  collection.insert([{'label' :label, 
-							  'uuid':id
-							}], function(err, result) {
-							
-			if (err) throw err;
-
-			return id;
-			db.close();
-		  });
-
-	  })
-   
-}

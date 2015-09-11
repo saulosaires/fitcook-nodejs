@@ -9,6 +9,12 @@ exports.create = function(req,res) {
 		res.write('{status:error,msg:user_1_invalid}');res.end();
 	  }
 
+	  if(!exports.update_profile(user_1)){
+	    res.write('{status:error,msg:user_1_not_exist}');res.end();
+	  }
+	  
+	  
+	  
 	  if(typeof user_2 == 'undefined' || user_2 === null || user_2 === "null" ){
 		res.write('{status:error,msg:user_2_invalid}');res.end();
 	  }
@@ -25,7 +31,7 @@ exports.create = function(req,res) {
 							
 			if(err) throw err;
 
-			 res.write('{status:success,msg:profile_registered}');res.end();
+			 res.write('{status:success,msg:relationship_registered}');res.end();
 			 db.close();
 			 
 		})
@@ -36,4 +42,30 @@ exports.create = function(req,res) {
  
 }
 
+exports.query_profile = function(email) {
+ 
+	    
+	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+		 
+	    var collection = db.collection('user');
+		
+		collection.find( {'email':email} ).limit(1).toArray(function(err, docs) {
+		
+			if(err) throw err;
+			
+			if (docs.length > 0){
+				return true;
+			 }else{
+				return false;
+			 }
+
+			db.close();
+		
+		})
+		   
+		 
+		 
+	})  
+   
+}
    
