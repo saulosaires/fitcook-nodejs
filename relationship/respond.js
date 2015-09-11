@@ -18,7 +18,7 @@ exports.respond = function(req,res) {
   }
   
   if(respond=='y' || respond=='Y'){
-	 exports.relationship_update(uuid);
+	 exports.relationship_update(req,res);
   }else{
      exports.relationship_delete(uuid)
   }
