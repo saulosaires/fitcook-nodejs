@@ -19,7 +19,7 @@ exports.retrieve = function(req,res) {
 	
 		collection.find([{
 							'user':{$elemMatch:email}
-					     }], function(err, result) {
+					     }]).toArray(function(err, result) {
 							
 			if(err) throw err;
 
@@ -28,7 +28,7 @@ exports.retrieve = function(req,res) {
 			 res.write(result+'');res.end();
 			 db.close();
 			 
-		})
+		});
 	 
 
 	})
