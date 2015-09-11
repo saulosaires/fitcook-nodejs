@@ -19,7 +19,7 @@ exports.create = function(req,res) {
 		res.write('{status:error,msg:user_2_invalid}');res.end();
 	  }
 
-	  if(!exports.query_profile(user_2)){
+	  if(exports.query_profile(user_2)==0){
 	    res.write('{status:error,msg:user_2_not_exist}');res.end();
 	  }
 
