@@ -37,7 +37,9 @@ exports.relationship_update = function(req,res) {
 		 
 		collection.update({'uuid':uuid},
 						   {
-							 'status':'O'
+						    $set:{
+							 'status':'A'
+						    }
 						   }, function(err, result) {
 							
 			if(err) throw err;
