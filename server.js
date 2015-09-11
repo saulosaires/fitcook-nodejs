@@ -48,6 +48,13 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
  			case '/api/relationshipBlock':
 				relationship.block(req,res);
 			break;	
+ 			case '/api/relationshipUnBlock':
+				relationship.unblock(req,res);
+			break;
+			
+ 			case '/api/relationshipDelete':
+				relationship.del(req,res);
+			break;		
 			
 			default:
 				res.write('default');
