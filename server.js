@@ -60,6 +60,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 				relationship.retrieve(req,res);
 			break;	
 			
+			
 			default:
 				res.write('default');
 				res.end();
