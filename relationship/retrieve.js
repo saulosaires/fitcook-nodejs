@@ -15,18 +15,17 @@ exports.retrieve = function(req,res) {
 
 		if(err) throw err;
 
-		var collection = db.collection('relationship');
+		var collection = db.collection('user');
 	
-		collection.find([{
-							'user':{$elemMatch:email}
-					     }]).toArray(function(err, result) {
+		collection.find({'user':{$elemMatch:email}
+					     }).toArray(function(err, result) {
 							
 			if(err) throw err;
 
-		 if (result.length > 0){
-			res.send(result);
+			if (result.length > 0){
+				res.send(result);
 			}else{
-			res.send("{}");
+				res.send("{}");
 			}
 			 res.end();
 			 db.close();
