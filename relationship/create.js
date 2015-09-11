@@ -8,9 +8,8 @@ exports.create = function(req,res) {
 	  if(typeof user_1 == 'undefined' || user_1 === null || user_1 === "null" ){
 		res.write('{status:error,msg:user_1_invalid}');res.end();
 	  }
-
-	   res.write(exports.query_profile(user_1)+'');res.end();
-	  if(!exports.query_profile(user_1)){
+ 
+	  if(exports.query_profile(user_1)==0){
 	    res.write('{status:error,msg:user_1_not_exist}');res.end();
 	  }
 	  
@@ -60,11 +59,8 @@ exports.query_profile = function(email) {
 		
 			if(err) throw err;
 			
-			if (docs.length > 0){
-				return true;
-			 }else{
-				return false;
-			 }
+			return docs.length;
+			 
 
 			db.close();
 		
