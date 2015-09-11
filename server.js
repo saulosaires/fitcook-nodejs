@@ -37,8 +37,8 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 				user.retrieve(req,res);
 			break;	
 			
-			case '/api/relationshipCreate':
-				relationship.create(req,res);
+			case '/api/relationshipSend':
+				relationship.send(req,res);
 			break;	
  
  

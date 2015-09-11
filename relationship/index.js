@@ -1,11 +1,11 @@
 
-var group_create    = require('./create');
-var group_retrieve  = require('./retrieve');
+var group_send    = require('./send');
+var group_respond  = require('./respond');
  
-exports.create = function(req,res) {
-	return group_create.create(req,res);
+exports.send = function(req,res) {
+	return group_send.send(req,res);
 }
-exports.retrieve = function(req,res) {
-	return group_retrieve.retrieve(req,res);
+exports.respond = function(req,res) {
+	return group_retrieve.respond(req,res);
 }
  
