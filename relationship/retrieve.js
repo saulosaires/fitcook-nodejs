@@ -15,13 +15,13 @@ exports.retrieve = function(req,res) {
 			if(err) throw err;
 			
 			if(docs.length==0){
-			 res.write('{status:error,msg:email_not_exist}');res.end();return;
+			 res.write('{status:error,msg:email_not_exist}');res.end();db.close();return;
 			}else{
 			 exports.relationship_retrieve(email);
 			}
 		 
 			 
-			db.close();
+			
 		
 		})
 		   
