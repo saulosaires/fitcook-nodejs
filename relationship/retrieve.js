@@ -30,8 +30,10 @@ exports.retrieve = function(req,res) {
 }
 
 
- exports.relationship_retrieve=function(email) {
+ exports.relationship_retrieve=function(req,res) {
  	  
+	var email = req.param("email");  
+	  
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
 		if(err) throw err;
