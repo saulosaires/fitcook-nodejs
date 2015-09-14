@@ -9,7 +9,7 @@ exports.send = function(req,res) {
 		res.write('{status:error,msg:user_1_invalid}');res.end();return;
 	  }
  
-	  if(exports.query_profile(user_1)==0){
+	  if(typeof exports.query_profile(user_1) == 'undefined'|| exports.query_profile(user_1)==0){
 	    res.write('{status:error,msg:user_1_not_exist}');res.end();return;
 	  }
 	  
@@ -18,7 +18,7 @@ exports.send = function(req,res) {
 		res.write('{status:error,msg:user_2_invalid}');res.end();return;
 	  }
 
-	  if(exports.query_profile(user_2)==0){
+	  if(typeof exports.query_profile(user_2) == 'undefined'|| exports.query_profile(user_2)==0){
 	    res.write('{status:error,msg:user_2_not_exist}');res.end();return;
 	  }
 
