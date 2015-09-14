@@ -40,10 +40,12 @@ exports.query_profile = function(email) {
  
 
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
-		 
-	    var collection = db.collection('user');
 		
-		collection.find( {'email':email} ).toArray(function(err, docs) {
+		if(err) throw err;
+	    
+		var collection = db.collection('user');
+		
+		collection.find({'email':email}).toArray(function(err, docs) {
 		
 			if(err) throw err;
 			

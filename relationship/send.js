@@ -13,8 +13,7 @@ exports.send = function(req,res) {
 	    res.write('{status:error,msg:user_1_not_exist}');res.end();return;
 	  }
 	  
-	  
-	  
+
 	  if(typeof user_2 == 'undefined' || user_2 === null || user_2 === "null" ){
 		res.write('{status:error,msg:user_2_invalid}');res.end();return;
 	  }
@@ -59,6 +58,8 @@ exports.query_profile = function(email) {
 	
 	
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+		 
+		 if(err) throw err;
 		 
 	    var collection = db.collection('user');
 		
