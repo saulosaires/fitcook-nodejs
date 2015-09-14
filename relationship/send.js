@@ -26,9 +26,9 @@ exports.send = function(req,res) {
 				if(err) throw err;
 				
 				if(docs.length<2){
-				 res.write('{status:error,msg:user_1_or_user_2_not_exist}');res.end();db.close();return;
+				   res.write('{status:success,msg:user_1_or_user_2_not_exist}');res.end();db.close();return;
 				}else{
-				res.write(docs);res.end();db.close();return;
+				  exports.exist_relationship(req,res);
 				}	
 			
 			})
@@ -37,7 +37,36 @@ exports.send = function(req,res) {
 
 }
 
-exports.create_relationship = function(email) {
+exports.exist_relationship = function(req,res) {
+  
+  	var user_1 = req.param("user_1");
+	var user_2 = req.param("user_2");
+	  
+	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+
+		if(err) throw err;
+
+		var collection = db.collection('relationship');
+	
+		collection.find({'users':{$elemMatch:[{'email':user_1},{'email':user_2}]} }).toArray(function(err, result) {
+													
+			if(err) throw err;
+
+			if (result.length >0){
+				res.write('{status:success,msg:user_1_and_user_2_already}');res.end();db.close();return;
+			}else{
+				exports.create_relationship(req,res);
+			}
+			 res.end();
+			 db.close();
+			 
+		})
+	 
+	})
+   
+}
+
+exports.create_relationship = function(req,res) {
  
  
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
