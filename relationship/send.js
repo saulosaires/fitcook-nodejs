@@ -28,16 +28,13 @@ exports.send = function(req,res) {
 				if(docs.length==2){
 				 res.write('{status:error,msg:user_1_or_user_2_not_exist}');res.end();db.close();return;
 				}else{
-				
+				res.write(docs);res.end();db.close();return;
 				}	
 			
 			})
 			   
 		})  	  
-	  
 
- 
- 
 }
 
 exports.create_relationship = function(email) {
