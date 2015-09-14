@@ -17,7 +17,7 @@ exports.retrieve = function(req,res) {
 			if(docs.length==0){
 			 res.write('{status:error,msg:email_not_exist}');res.end();db.close();return;
 			}else{
-			 exports.relationship_retrieve(email);
+			 exports.relationship_retrieve(req,res);
 			}
 		 
 			 
