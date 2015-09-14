@@ -69,6 +69,8 @@ exports.exist_relationship = function(req,res) {
 
 exports.create_relationship = function(req,res) {
  
+ 	  var user_1 = req.param("user_1");
+	  var user_2 = req.param("user_2");
  
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
