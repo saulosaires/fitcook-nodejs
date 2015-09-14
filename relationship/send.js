@@ -66,6 +66,7 @@ exports.exist_relationship = function(req,res) {
    
 }
 
+
 exports.create_relationship = function(req,res) {
  
  
