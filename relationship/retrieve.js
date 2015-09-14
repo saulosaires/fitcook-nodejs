@@ -1,6 +1,5 @@
 exports.retrieve = function(req,res) {
 
-	
 	var email = req.param("email");
 	      
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
@@ -10,8 +9,7 @@ exports.retrieve = function(req,res) {
 		var collection = db.collection('user');
 	
 		collection.find( { 'users':{ '$elemMatch': { email } } } ).toArray(function(err, result) {
-							
-							
+													
 			if(err) throw err;
 
 			if (result.length > 0){
