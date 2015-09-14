@@ -4,14 +4,37 @@ exports.retrieve = function(req,res) {
 	      
 	if(typeof email == 'undefined' || email === null || email === "null" ){
 		res.write('{status:error,msg:email_invalid}');res.end();return;
-	}
- 
-  res.write(query_profile(email)+'');res.end();return;
- 
-	if(typeof exports.query_profile(email) == 'undefined'|| exports.query_profile(email)==0){
-	    res.write('{status:error,msg:email_not_exist}');res.end();return;
-	}		  
+	}	  
 		  
+	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+		 
+		if(err) throw err;
+ 	 
+		db.collection('user').find({'email':email}).toArray(function(err, docs) {
+		
+			if(err) throw err;
+			
+			if(docs.length==0){
+			 res.write('{status:error,msg:email_not_exist}');res.end();return;
+			}else{
+			 relationship_retrieve(email);
+			}
+		 
+			 
+			db.close();
+		
+		})
+		   
+	})  		  
+		  
+
+
+}
+
+
+
+function relationship_retrieve(email) {
+ 	  
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
 		if(err) throw err;
@@ -33,28 +56,5 @@ exports.retrieve = function(req,res) {
 		})
 	 
 	})
-
-}
-
-
-
-function query_profile(email) {
- 
-
-	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
-		return '1';
-		if(err) throw err;
- 		return '2';
-		db.collection('user').find({'email':email}).toArray(function(err, docs) {
-		
-			if(err) throw err;
-			
-			return docs.length;
-			 
-			db.close();
-		
-		})
-		   
-	})  
    
 }
