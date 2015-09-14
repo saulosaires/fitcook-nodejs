@@ -21,7 +21,7 @@ exports.send = function(req,res) {
 			 
 			if(err) throw err;
 		 
-			db.collection('user').find({'email':user_1},{'email':user_2}).toArray(function(err, docs) {
+			db.collection('user').find([{'email':user_1},{'email':user_2}]).toArray(function(err, docs) {
 			
 				if(err) throw err;
 				
