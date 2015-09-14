@@ -6,6 +6,7 @@ exports.retrieve = function(req,res) {
 		res.write('{status:error,msg:email_invalid}');res.end();return;
 	  }
  res.write(exports.query_profile(email));res.end();return;
+ 
 	  if(exports.query_profile(email)==0){
 	    res.write('{status:error,msg:email_not_exist}');res.end();return;
 	  }		  
