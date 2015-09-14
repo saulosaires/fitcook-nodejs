@@ -43,7 +43,7 @@ exports.query_profile = function(email) {
 		 
 	    var collection = db.collection('user');
 		
-		collection.find( {'email':email} ).limit(1).toArray(function(err, docs) {
+		collection.find( {'email':email} ).toArray(function(err, docs) {
 		
 			if(err) throw err;
 			
