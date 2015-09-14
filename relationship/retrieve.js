@@ -48,7 +48,7 @@ exports.query_profile = function(email) {
 		
 			if(err) throw err;
 			
-			return docs.length;
+			return docs;
 			 
 
 			db.close();
