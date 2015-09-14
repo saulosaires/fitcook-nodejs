@@ -6,7 +6,7 @@ exports.retrieve = function(req,res) {
 
 		if(err) throw err;
 
-		var collection = db.collection('user');
+		var collection = db.collection('relationship');
 	
 		collection.find({'users':{$elemMatch:{'email':email}} }).toArray(function(err, result) {
 													
