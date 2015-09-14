@@ -10,28 +10,8 @@ exports.retrieve = function(req,res) {
 	    res.write('{status:error,msg:email_not_exist}');res.end();return;
 	}
 	  
+res.send(email);res.end();
 
-	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
-
-		if(err) throw err;
-
-		var collection = db.collection('user');
-	
-		collection.find( {"users":$elemMatch:{email}}).toArray(function(err, result) {
-							
-			if(err) throw err;
-
-			if (result.length > 0){
-				res.send(result);
-			}else{
-				res.send("{}");
-			}
-			 res.end();
-			 db.close();
-			 
-		})
-	 
-	})
  
 }
 
