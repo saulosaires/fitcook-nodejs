@@ -36,7 +36,7 @@ exports.send = function(req,res) {
 		  
 		var id= uuid.v1();
 		  
-		collection.insert([{'user':[user_1,user_2],
+		collection.insert([{'users':[user_1,user_2],
 							'status':'P',
 							'uuid':id
 				 }], function(err, result) {
