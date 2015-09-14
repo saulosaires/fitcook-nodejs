@@ -48,7 +48,7 @@ exports.exist_relationship = function(req,res) {
 
 		var collection = db.collection('relationship');
 	
-		collection.find({'users':{$elemMatch:{[{'email':user_1},{'email':user_2}]}} }).toArray(function(err, result) {
+		collection.find({'users':{$elemMatch:{$in: [user_1,user_2]}} }).toArray(function(err, result) {
 													
 			if(err) throw err;
 
