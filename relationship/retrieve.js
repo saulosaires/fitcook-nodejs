@@ -42,7 +42,7 @@ exports.query_profile = function(email) {
  
 
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
-		
+		return '1';
 		if(err) throw err;
  		return '2';
 		db.collection('user').find({'email':email}).toArray(function(err, docs) {
