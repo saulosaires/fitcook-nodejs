@@ -57,8 +57,8 @@ exports.exist_relationship = function(req,res) {
 			}else{
 				exports.create_relationship(req,res);
 			}
-			 res.end();
-			 db.close();
+			
+			
 			 
 		})
 	 
@@ -89,6 +89,7 @@ exports.create_relationship = function(req,res) {
 
 			 res.write('{status:success,msg:relationship_registered}');res.end();
 			 db.close();
+			
 			 
 		})
 	 
