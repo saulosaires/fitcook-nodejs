@@ -5,7 +5,7 @@ var mean = require('meanio');
 var url     = require('url');
 
 var user=require('./user/index');
-var relationship=require('./relationship/index');
+var recipe=require('./recipe/index');
 
 
 // Creates and serves mean application
@@ -37,28 +37,11 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 				user.retrieve(req,res);
 			break;	
 			
-			case '/api/relationshipSend':
-				relationship.send(req,res);
+			case '/api/recipeCreate':
+				recipe.create(req,res);
 			break;	
 			
- 			case '/api/relationshipRespond':
-				relationship.respond(req,res);
-			break;	
- 
- 			case '/api/relationshipBlock':
-				relationship.block(req,res);
-			break;	
- 			case '/api/relationshipUnBlock':
-				relationship.unblock(req,res);
-			break;
-			
- 			case '/api/relationshipDelete':
-				relationship.del(req,res);
-			break;		
-
- 			case '/api/relationshipRetrieve':
-				relationship.retrieve(req,res);
-			break;	
+ 			 
 			
 			
 			default:
