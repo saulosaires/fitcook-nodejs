@@ -18,6 +18,12 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
+  app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+  
   app.get('/api/*', function (req,res,next) {
     
  var pathname = url.parse(req.url).pathname;
