@@ -9,4 +9,7 @@ exports.create = function(req,res) {
  exports.retrieve = function(req,res) {
 	return recipe_retrieve.retrieve(req,res);
 }
+ exports.retrieveById = function(req,res) {
+	return recipe_retrieve.retrieveById(req,res);
+}
  
