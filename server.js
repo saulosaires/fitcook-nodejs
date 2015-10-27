@@ -41,7 +41,9 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 				recipe.create(req,res);
 			break;	
 			
- 			 
+			case '/api/recipeRetrieve':
+				recipe.retrieve(req,res);
+			break; 			 
 			
 			
 			default:
