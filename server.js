@@ -18,7 +18,11 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
   
   app.get('/api/*', function (req,res,next) {
     
