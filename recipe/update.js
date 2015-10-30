@@ -22,7 +22,7 @@ exports.update = function(req,res) {
 
 		var collection = db.collection('recipes');
  
-		collection.update({'id':ObjectID(id)},
+		collection.update({_id:require('mongodb').ObjectID(id)} ,
 							[{'recipe':recipe,'time':new Date().getTime()
 				 }], function(err, result) {
 							
