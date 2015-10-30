@@ -24,7 +24,7 @@ exports.create = function(req,res) {
 			var result={"status":"success","msg":"recipe_created"}
 			var json=JSON.stringify(result);
 			
-			 res.write(json);res.end();
+			 res.write("success");res.end();
 			 db.close();
 			
 			 
