@@ -21,9 +21,8 @@ exports.update = function(req,res) {
 		if(err) throw err;
 
 		var collection = db.collection('recipes');
-		  
  
-		collection.update({'id':id},
+		collection.update({'id':ObjectID(id)},
 							[{'recipe':recipe,'time':new Date().getTime()
 				 }], function(err, result) {
 							
