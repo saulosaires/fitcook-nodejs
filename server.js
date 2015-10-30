@@ -4,7 +4,6 @@
 var mean = require('meanio');
 var url     = require('url');
 
-var user=require('./user/index');
 var recipe=require('./recipe/index');
 
 
@@ -45,17 +44,13 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 				res.write('nada por enquanto');
 				res.end();
 			break;				
-
-			case '/api/userLogin':
-				user.login(req,res);
-			break;	
-
-			case '/api/userRetrieve':
-				user.retrieve(req,res);
-			break;	
 			
 			case '/api/recipeCreate':
 				recipe.create(req,res);
+			break;	
+			
+			case '/api/recipeUpdate':
+				recipe.update(req,res);
 			break;	
 			
 			case '/api/recipeRetrieve':

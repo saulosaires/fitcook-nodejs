@@ -1,5 +1,5 @@
  
-exports.create = function(req,res) {
+exports.update = function(req,res) {
 	
     var recipe = req.param("recipe");
  	var id  = req.param("id");
