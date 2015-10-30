@@ -29,7 +29,7 @@ exports.update = function(req,res) {
 							
 			if(err) throw err;
 
-			var result={"status":"success","msg":"recipe_created"}
+			var result={"status":"success","msg":"recipe_updated"}
 			var json=JSON.stringify(result);
 			
 			 res.write(json);res.end();
