@@ -21,14 +21,11 @@ exports.update = function(req,res) {
 		if(err) throw err;
 
 		
-		
+
 		var collection = db.collection('recipes');
  
 		collection.update({_id:require('mongodb').ObjectID(id)} ,
-							  $set: {
-								'recipe':recipe,
-								'time':new Date().getTime()
-							  }, 
+							{'recipe':recipe,'time':new Date().getTime()}, 
 							function(err, result) {
 							
 			if(err) throw err;
