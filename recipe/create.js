@@ -21,7 +21,7 @@ exports.create = function(req,res) {
 							
 			if(err) throw err;
 
-			 res.write('{status:success,msg:recipe_created}');res.end();
+			 res.write('{"status":"success","msg":"recipe_created"}');res.end();
 			 db.close();
 			
 			 
