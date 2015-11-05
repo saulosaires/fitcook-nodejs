@@ -6,7 +6,6 @@ var url     = require('url');
 var cors = require('cors');
 var recipe=require('./recipe/index');
 
-
 // Creates and serves mean application
 mean.serve({ /*options placeholder*/ }, function(app, config) {
 
