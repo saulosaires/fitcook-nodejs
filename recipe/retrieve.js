@@ -74,7 +74,7 @@ exports.retrieveApp = function(req,res) {
 
 exports.retrieveByTime = function(req,res) {
 	
-	var time  = req.param("time");
+	var time  = Number(req.param("time"));
  
 	
   
