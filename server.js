@@ -20,7 +20,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
  app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://peaceful-sierra-3484.herokuapp.com');
+    res.setHeader('Access-Control-Allow-Origin', 'http://fitcooksite-pingy.rhcloud.com/');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -41,7 +41,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
     
 	
 	  // Website you wish to allow to connect
-	res.setHeader('Access-Control-Allow-Origin', 'http://peaceful-sierra-3484.herokuapp.com');
+	res.setHeader('Access-Control-Allow-Origin', 'http://fitcooksite-pingy.rhcloud.com/');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
