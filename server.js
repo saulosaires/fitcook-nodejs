@@ -31,6 +31,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	}
 });
   
+  
  
   
   app.get('/api/*', function (req,res,next) {
