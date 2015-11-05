@@ -5,7 +5,7 @@ var mean = require('meanio');
 var url     = require('url');
 
 var recipe=require('./recipe/index');
- 
+
 
 // Creates and serves mean application
 mean.serve({ /*options placeholder*/ }, function(app, config) {
@@ -17,13 +17,41 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
-  app.set('view engine', 'ejs');
-  
-  app.get('/', function(request, response,next) {
-  response.render('./site/index');
+ app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://peaceful-sierra-3484.herokuapp.com');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
 });
   
+  
   app.get('/api/*', function (req,res,next) {
+    
+	
+	  // Website you wish to allow to connect
+	res.setHeader('Access-Control-Allow-Origin', 'http://peaceful-sierra-3484.herokuapp.com');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
 	
  var pathname = url.parse(req.url).pathname;
 		 
