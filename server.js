@@ -7,6 +7,7 @@ var url     = require('url');
 var recipe=require('./recipe/index');
 
 
+
 // Creates and serves mean application
 mean.serve({ /*options placeholder*/ }, function(app, config) {
 
@@ -19,7 +20,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   app.set('view engine', 'ejs');
   
-  app.get('/', function(request, response) {
+  app.get('/', function(request, response,next) {
   response.render('site/index');
 });
   
