@@ -3,7 +3,7 @@
 // Requires meanio
 var mean = require('meanio');
 var url     = require('url');
-
+var cors = require('cors');
 var recipe=require('./recipe/index');
 
 
@@ -17,21 +17,9 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
- app.use(function (req, res, next) {
-
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-	res.header('Access-Control-Allow-Headers', 'Content-Type');
-	// some browsers send a pre-flight OPTIONS request to check if CORS is enabled so you have to also respond to that
-	if ('OPTIONS' === req.method) {
-	  res.send(200);
-	}
-	else {
-	  next();
-	}
-});
+ 
   
-  
+  app.use(cors());
  
   
   app.get('/api/*', function (req,res,next) {
