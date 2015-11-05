@@ -5,8 +5,7 @@ var mean = require('meanio');
 var url     = require('url');
 
 var recipe=require('./recipe/index');
-
-
+ 
 
 // Creates and serves mean application
 mean.serve({ /*options placeholder*/ }, function(app, config) {
