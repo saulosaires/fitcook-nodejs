@@ -15,7 +15,8 @@ exports.create = function(req,res) {
 		var collection = db.collection('recipes');
 		  
  
-		collection.insert([{'recipe':recipe,
+		collection.insert([{'ativo':'true',
+							'recipe':recipe,
 							'time':new Date().getTime()
 				 }], function(err, result) {
 							
