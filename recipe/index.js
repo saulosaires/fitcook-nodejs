@@ -16,6 +16,9 @@ exports.update = function(req,res) {
  exports.retrieveById = function(req,res) {
 	return recipe_retrieve.retrieveById(req,res);
 }
+ exports.retrieveApp = function(req,res) {
+	return recipe_retrieve.retrieveApp(req,res);
+}
  exports.deleteRecipe = function(req,res) {
 	return recipe_delete.deleteRecipe(req,res);
 }

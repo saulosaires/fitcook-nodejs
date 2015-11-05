@@ -46,7 +46,10 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 			case '/api/retrieveById':
 				recipe.retrieveById(req,res);
 			break; 			
-
+			case '/api/retrieveApp':
+				recipe.retrieveApp(req,res);
+			break; 	
+			
 			case '/api/deleteRecipe':
 				recipe.deleteRecipe(req,res);
 			break; 			

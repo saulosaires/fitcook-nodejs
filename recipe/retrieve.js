@@ -26,7 +26,6 @@ exports.retrieve = function(req,res) {
 	})
 }
 
-
 exports.retrieveById = function(req,res) {
 	
 	var id  = req.param("id");
@@ -59,4 +58,42 @@ exports.retrieveById = function(req,res) {
  
 }
 
+exports.retrieveApp = function(req,res) {
 	
+	var time  = req.param("time");
+     
+ 
+    if(typeof time == 'undefined'){
+		exports.retrieve(req,res);
+	}else{
+		exports.retrieveByTime(req,res);
+	}
+  
+ 
+ 
+}	
+
+exports.retrieveByTime = function(req,res) {
+	
+	var time  = req.param("time");
+ 
+	
+  
+	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+	 	  
+	if(err) throw err;
+	   
+	var collection = db.collection('recipes');
+	  
+		collection.find( {'time': {$gt:time}} ).toArray(function(err, docs) {
+			
+			if(err) throw err;
+			
+			res.send(docs);
+			res.end();
+			db.close();
+			
+		})
+	})
+ 
+}
