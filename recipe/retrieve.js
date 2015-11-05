@@ -70,7 +70,6 @@ exports.retrieveApp = function(req,res) {
 	}
   
  
- 
 }	
 
 exports.retrieveByTime = function(req,res) {
