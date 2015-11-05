@@ -21,7 +21,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   app.set('view engine', 'ejs');
   
   app.get('/', function(request, response,next) {
-  response.render('site/index');
+  response.render('./site/index');
 });
   
   app.get('/api/*', function (req,res,next) {
