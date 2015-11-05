@@ -85,7 +85,7 @@ exports.retrieveByTime = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find( {'time': {$gt:time}} ).toArray(function(err, docs) {
+		collection.find( {'time': {$gte:time}} ).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
