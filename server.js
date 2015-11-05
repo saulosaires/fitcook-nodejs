@@ -17,12 +17,23 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-  
+var permitCrossDomainRequests = function(req, res, next) {
+
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+	res.header('Access-Control-Allow-Headers', 'Content-Type');
+	// some browsers send a pre-flight OPTIONS request to check if CORS is enabled so you have to also respond to that
+	if ('OPTIONS' === req.method) {
+	  res.send(200);
+	}
+	else {
+	  next();
+	}
+	
+};
+
+app.use(permitCrossDomainRequests);
+ app.use(app.router); 
   
   app.get('/api/*', function (req,res,next) {
     
