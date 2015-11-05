@@ -17,7 +17,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
-var permitCrossDomainRequests = function(req, res, next) {
+ app.use(function (req, res, next) {
 
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -29,11 +29,9 @@ var permitCrossDomainRequests = function(req, res, next) {
 	else {
 	  next();
 	}
-	
-};
-
-app.use(permitCrossDomainRequests);
- app.use(app.router); 
+});
+  
+  app.use(app.router);
   
   app.get('/api/*', function (req,res,next) {
     
