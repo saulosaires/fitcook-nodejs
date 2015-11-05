@@ -17,6 +17,8 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
   
+  app.set('view engine', 'ejs');
+  
   app.get('/', function(request, response) {
   response.render('site/index');
 });
