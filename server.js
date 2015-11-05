@@ -31,7 +31,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	}
 });
   
-  app.use(app.router);
+ 
   
   app.get('/api/*', function (req,res,next) {
     
