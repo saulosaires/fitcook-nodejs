@@ -13,10 +13,9 @@ exports.create = function(req,res) {
 		if(err) throw err;
 
 		var collection = db.collection('recipes');
-		  
- 
+		    
 		collection.insert([{'ativo':'true',
-							'recipe':recipe,
+							'recipe': JSON.stringify(JSON.parse(recipe)),
 							'time':new Date().getTime()
 				 }], function(err, result) {
 							
