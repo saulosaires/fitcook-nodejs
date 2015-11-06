@@ -88,7 +88,12 @@ exports.retrieveByTime = function(req,res) {
 			
 			if(err) throw err;
 			
-			res.send(docs);
+			var jsonData = {};
+			    jsonData["status"] = "success";
+			    jsonData["array"] = docs;
+			    jsonData["time"] = new Date().getTime();
+			
+			res.send(JSON.stringify(jsonData));
 			res.end();
 			db.close();
 			
