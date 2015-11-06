@@ -21,7 +21,7 @@ exports.create = function(req,res) {
 		
 		var json = JSON.stringify(jsonData);
 			
-		collection.insert({json}, function(err, result) {
+		collection.insert([json], function(err, result) {
 							
 			if(err) throw err;
 
