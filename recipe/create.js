@@ -13,15 +13,12 @@ exports.create = function(req,res) {
 		if(err) throw err;
 
 		var collection = db.collection('recipes');
-		    
-		var jsonData = {};
-			jsonData["ativo"] = "true";
-			jsonData["recipe"] = recipe;
-			jsonData["time"] = new Date().getTime();
 		
-		var json = JSON.stringify(jsonData);
 			
-		collection.insert([json], function(err, result) {
+		collection.insert([{'ativo':'true',
+							'recipe':{recipe},
+							'time':new Date().getTime()
+				 }], function(err, result) {
 							
 			if(err) throw err;
 
