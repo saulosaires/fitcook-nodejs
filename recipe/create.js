@@ -14,10 +14,14 @@ exports.create = function(req,res) {
 
 		var collection = db.collection('recipes');
 		    
-		collection.insert([{'ativo':'true',
-							'recipe': JSON.stringify(JSON.parse(recipe)),
-							'time':new Date().getTime()
-				 }], function(err, result) {
+		var jsonData = {};
+			jsonData["ativo"] = "true";
+			jsonData["recipe"] = recipe;
+			jsonData["time"] = new Date().getTime();
+		
+		var json = JSON.stringify(jsonData);
+			
+		collection.insert([{json}], function(err, result) {
 							
 			if(err) throw err;
 
