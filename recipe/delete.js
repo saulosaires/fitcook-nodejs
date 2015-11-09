@@ -25,12 +25,20 @@ exports.deleteRecipe = function(req,res) {
 							}, 
 							function(err, result) {
 			
+				var jsonData = {};
+			
 			if(err){
-				res.write('{status:error,msg:['+err+']}');res.end();
+					
+			    jsonData["status"] = "success";
+			    jsonData["msg"] = err;
+			 
+			
+			res.write(JSON.stringify(jsonData));res.end();
 			}
-			console.log(results);
-			res.send('{status:success,msg:[sucess],result:'+results+'}');
-			res.end();
+			    jsonData["status"] = "success";
+			    jsonData["msg"] = "sucess";
+				jsonData["result"] = "result";
+			res.send(JSON.stringify(jsonData));res.end();
 			db.close();
 			
 		})
