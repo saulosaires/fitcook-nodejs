@@ -13,7 +13,7 @@ exports.retrieve = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find( "ativo": "true" ).toArray(function(err, docs) {
+		collection.find({ "ativo": "true"} ).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			 
