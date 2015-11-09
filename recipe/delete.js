@@ -17,7 +17,13 @@ exports.deleteRecipe = function(req,res) {
 	   
 		var collection = db.collection('recipes');
 	  
-		collection.deleteOne( {_id:require('mongodb').ObjectID(id)},function(err, results) {
+			collection.update({_id:require('mongodb').ObjectID(id)} ,
+							{ $set:{
+									'ativo':'false' ,
+									'time':new Date().getTime()
+									}
+							}, 
+							function(err, result) {
 			
 			if(err){
 				res.write('{status:error,msg:['+err+']}');res.end();
