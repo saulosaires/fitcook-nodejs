@@ -24,9 +24,13 @@ exports.login = function(jwt,req,res) {
 		
 			if(err) throw err;
 			
+			var token = jwt.sign(user, global.secret, {
+				  expiresInMinutes: 1440 // expires in 24 hours
+				});
+			
 	 			var jsonData = {};
 			    jsonData["status"] = "error";
-			    jsonData["msg"] = "ddddd";
+			    jsonData["msg"] = token;
 				res.send(JSON.stringify(jsonData));
 				res.end();
 
