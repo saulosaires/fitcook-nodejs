@@ -9,7 +9,7 @@ exports.login = function(jwt,req,res) {
 		res.write('{status:error,msg:email_required}');res.end();
 	  }
 	 
- 	  if(typeof password == 'password'){
+ 	  if(typeof password == 'undefined'){
 		res.write('{status:error,msg:password_required}');res.end();
 	  }
 
