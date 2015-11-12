@@ -55,6 +55,7 @@
     "express": "^4.2.0",
     "express-session": "^1.1.0",
     "express-validator": "^2.1.1",
+    "jsonwebtoken": "^5.4.1",
     "lodash": "^2.4.1",
     "meanio": "~0.5.10",
     "method-override": "^1.0.0",

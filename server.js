@@ -1,10 +1,12 @@
 'use strict';
 
 // Requires meanio
-var mean = require('meanio');
-var url     = require('url');
-var cors = require('cors');
-var recipe=require('./recipe/index');
+var mean   = require('meanio');
+var url    = require('url');
+var cors   = require('cors');
+var recipe = require('./recipe/index');
+var user   = require('./user/index');
+var jwt    = require('jsonwebtoken'); 
 
 // Creates and serves mean application
 mean.serve({ /*options placeholder*/ }, function(app, config) {
@@ -14,6 +16,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
     console.log('Mean secure app started on port ' + config.https.port + ' (' + process.env.NODE_ENV + ')');
   }
   
+  global.secret='ilovescotchyscotch';
   global.urlMongo='mongodb://admin:NlCv6mWKfga1@127.10.56.2:27017/mean';
  
   app.use(cors());
@@ -53,6 +56,10 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 			case '/api/deleteRecipe':
 				recipe.deleteRecipe(req,res);
 			break; 			
+			
+			case '/api/login':
+				user.login(jwt,req,res);
+			break; 	
 			
 			default:
 				res.write('default');
