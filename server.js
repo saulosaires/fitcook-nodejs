@@ -29,6 +29,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	recipe.retrieveApp(req,res);
   });  
   
+  
   // route middleware to verify a token
   app.use(function(req, res, next) {
 
