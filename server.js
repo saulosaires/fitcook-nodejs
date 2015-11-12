@@ -37,7 +37,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	  var token = req.param("token");// req.body.token || req.query.token || req.headers['x-access-token'];
 
 	  // decode token
-	  if (token) {
+	  if (typeof token != 'undefined') {
 
 		// verifies secret and checks exp
 		jwt.verify(token, global.secret, function(err, decoded) {      
