@@ -94,9 +94,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 			case '/api/deleteRecipe':
 				recipe.deleteRecipe(req,res);
 			break; 			
-			
 
-			
 			default:
 				res.write('default');
 				res.end();
