@@ -40,7 +40,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	  if (token) {
 
 		// verifies secret and checks exp
-		jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+		jwt.verify(token, global.secret, function(err, decoded) {      
 		  if (err) {
 			return res.json({ success: false, message: 'Failed to authenticate token.' });    
 		  } else {
