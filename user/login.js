@@ -20,32 +20,15 @@ exports.login = function(jwt,req,res) {
 	 
 		if(err) throw err;
 
-		collection.find( {'email':email} ).limit(1).toArray(function(err, docs) {
+		collection.find( 'email':email ).limit(1).toArray(function(err, docs) {
 		
 			if(err) throw err;
 			
-			if (docs.length > 0){
-				exports.update_profile(req,res);
-				
-				var token = jwt.sign(user, global.secret, {
-				  expiresInMinutes: 1440 // expires in 24 hours
-				});
-				
-				var jsonData = {};
-			    jsonData["status"] = "success";
-			    jsonData["token"] = token;
-				res.send(JSON.stringify(jsonData));
-				res.end();				
-
-				
-			 }else{
-			 
-				var jsonData = {};
+	 			var jsonData = {};
 			    jsonData["status"] = "error";
-			    jsonData["msg"] = "invalid_email_or_password";
+			    jsonData["msg"] = "ddddd";
 				res.send(JSON.stringify(jsonData));
 				res.end();
-			 }
 
 			db.close();
 		
