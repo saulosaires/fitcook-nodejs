@@ -24,15 +24,28 @@ exports.login = function(jwt,req,res) {
 		
 			if(err) throw err;
 			
-			var token = jwt.sign(docs, global.secret, {
+			if (docs.length > 0){
+				exports.update_profile(req,res);
+				
+				var token = jwt.sign(docs, global.secret, {
 				  expiresInMinutes: 1440 // expires in 24 hours
 				});
-			
-	 			var jsonData = {};
+				
+				var jsonData = {};
+			    jsonData["status"] = "success";
+			    jsonData["token"] = token;
+				res.send(JSON.stringify(jsonData));
+				res.end();				
+
+				
+			 }else{
+			 
+				var jsonData = {};
 			    jsonData["status"] = "error";
-			    jsonData["msg"] = token;
+			    jsonData["msg"] = "invalid_email_or_password";
 				res.send(JSON.stringify(jsonData));
 				res.end();
+			 }
 
 			db.close();
 		
