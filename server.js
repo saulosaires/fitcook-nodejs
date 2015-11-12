@@ -21,14 +21,52 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
  
   app.use(cors());
 
-
-
+  app.get('/api/login', function (req,res,next) {
+	user.login(jwt,req,res);
+  });
   
+  app.get('/api/retrieveApp', function (req,res,next) {
+	recipe.retrieveApp(req,res);
+  });  
   
+  // route middleware to verify a token
+  app.use(function(req, res, next) {
+
+	  // check header or url parameters or post parameters for token
+	  var token = req.param("deviceId");// req.body.token || req.query.token || req.headers['x-access-token'];
+
+	  // decode token
+	  if (token) {
+
+		// verifies secret and checks exp
+		jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+		  if (err) {
+			return res.json({ success: false, message: 'Failed to authenticate token.' });    
+		  } else {
+			// if everything is good, save to request for use in other routes
+			req.decoded = decoded;    
+			next();
+		  }
+		});
+
+	  } else {
+
+		// if there is no token
+		// return an error
+		return res.status(403).send({ 
+			success: false, 
+			message: 'No token provided.' 
+		});
+		
+	  }
+  }); 
+ 
+ 
+ 
   app.get('/api/*', function (req,res,next) {
     
  
- var pathname = url.parse(req.url).pathname;
+    var pathname = url.parse(req.url).pathname;
 		 
 		switch(pathname){
 		
@@ -51,18 +89,13 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 
 			case '/api/retrieveById':
 				recipe.retrieveById(req,res);
-			break; 			
-			case '/api/retrieveApp':
-				recipe.retrieveApp(req,res);
 			break; 	
-			
+
 			case '/api/deleteRecipe':
 				recipe.deleteRecipe(req,res);
 			break; 			
 			
-			case '/api/login':
-				user.login(jwt,req,res);
-			break; 	
+
 			
 			default:
 				res.write('default');
