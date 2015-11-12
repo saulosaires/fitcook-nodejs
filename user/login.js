@@ -12,8 +12,7 @@ exports.login = function(jwt,req,res) {
  	  if(typeof password == 'undefined'){
 		res.write('{status:error,msg:password_required}');res.end();
 	  }
-
-	  
+  
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	  
 	    var collection = db.collection('user');
