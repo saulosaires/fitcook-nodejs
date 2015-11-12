@@ -19,7 +19,7 @@ exports.login = function(jwt,req,res) {
 	 
 		if(err) throw err;
 
-		collection.find( $and:[{'email':email},{'password':password}] ).limit(1).toArray(function(err, docs) {
+		collection.find( {$and:[{'email':email},{'password':password}] }).limit(1).toArray(function(err, docs) {
 		
 			if(err) throw err;
 			
