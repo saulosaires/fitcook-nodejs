@@ -24,7 +24,7 @@ exports.login = function(jwt,req,res) {
 		
 			if(err) throw err;
 			
-			var token = jwt.sign(user, global.secret, {
+			var token = jwt.sign(docs, global.secret, {
 				  expiresInMinutes: 1440 // expires in 24 hours
 				});
 			
