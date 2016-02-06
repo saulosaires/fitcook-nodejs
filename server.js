@@ -29,6 +29,9 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	recipe.retrieveApp(req,res);
   });  
   
+  app.get('/api/retrieveSite', function (req,res,next) {
+	recipe.retrieveSite(req,res);
+  }); 
   
   // route middleware to verify a token
   app.use(function(req, res, next) {
@@ -37,7 +40,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	  var token = req.param("token");// req.body.token || req.query.token || req.headers['x-access-token'];
 
 	  // decode token
-	  if (typeof token != 'undefined') {
+	  if (token) {
 
 		// verifies secret and checks exp
 		jwt.verify(token, global.secret, function(err, decoded) {      

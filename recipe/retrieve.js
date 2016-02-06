@@ -101,3 +101,34 @@ exports.retrieveByTime = function(req,res) {
 	})
  
 }
+
+
+exports.retrieveSite = function(req,res) {
+	
+	var limit  = Number(req.param("limit"));
+	var page  = Number(req.param("page"));
+	
+  
+	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+	 	  
+	if(err) throw err;
+	   
+	var collection = db.collection('recipes');
+	  
+		collection.find().limit(limit).skip(limit*(page-1).toArray(function(err, docs) {
+			
+			if(err) throw err;
+			
+			var jsonData = {};
+			    jsonData["status"] = "success";
+			    jsonData["array"] = docs;
+			    jsonData["time"] = new Date().getTime();
+			
+			res.send(JSON.stringify(jsonData));
+			res.end();
+			db.close();
+			
+		})
+	})
+ 
+}
