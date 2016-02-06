@@ -33,6 +33,7 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
 	recipe.retrieveSite(req,res);
   }); 
   
+  
   // route middleware to verify a token
   app.use(function(req, res, next) {
 

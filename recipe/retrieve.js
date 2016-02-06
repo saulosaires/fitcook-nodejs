@@ -102,7 +102,6 @@ exports.retrieveByTime = function(req,res) {
  
 }
 
-
 exports.retrieveSite = function(req,res) {
 	
 	var limit  = Number(req.param("limit"));
