@@ -114,7 +114,7 @@ exports.retrieveSite = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find().limit(limit).skip(limit*(page-1).toArray(function(err, docs) {
+		collection.find().limit(limit).skip(limit*(page-1)).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
