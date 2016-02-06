@@ -104,8 +104,19 @@ exports.retrieveByTime = function(req,res) {
 
 exports.retrieveSite = function(req,res) {
 	
-	var limit  = Number(req.param("limit"));
-	var page  = Number(req.param("page"));
+	var limit = req.param("limit");
+	var page  = req.param("page");
+	
+	if(typeof limit == 'undefined' || typeof page == 'undefined'){
+	 res.write('{status:error,msg:[page_and_limit_required]}');res.end();
+	}
+	
+	if(isNaN(limit) || isNaN(page)){
+		res.write('{status:error,msg:[page_and_limit_should_be_number]}');res.end();
+	}
+	
+	limit  = Number(limit);
+	page   = Number(page);
 	
   
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
@@ -121,7 +132,7 @@ exports.retrieveSite = function(req,res) {
 			var jsonData = {};
 			    jsonData["status"] = "success";
 			    jsonData["array"] = docs;
-			    jsonData["time"] = new Date().getTime();
+			    
 			
 			res.send(JSON.stringify(jsonData));
 			res.end();
