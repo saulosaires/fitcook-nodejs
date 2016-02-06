@@ -134,6 +134,7 @@ exports.retrieveSite = function(req,res) {
 			    jsonData["array"] = docs;
 			    
 			
+			
 			res.send(JSON.stringify(jsonData));
 			res.end();
 			db.close();
