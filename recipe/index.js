@@ -20,7 +20,7 @@ exports.update = function(req,res) {
 	return recipe_retrieve.retrieveApp(req,res);
 }
  exports.retrieveSite = function(req,res) {
-	return recipe_delete.retrieveSite(req,res);
+	return recipe_retrieve.retrieveSite(req,res);
 }
  exports.deleteRecipe = function(req,res) {
 	return recipe_delete.deleteRecipe(req,res);
