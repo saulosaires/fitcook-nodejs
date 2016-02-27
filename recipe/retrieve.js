@@ -103,23 +103,51 @@ exports.retrieveByTime = function(req,res) {
 }
 
 exports.retrieveSite = function(req,res) {
-
- /* 
+ 
  	var name      = req.param("name");
  
-	var options;
-	
-	
-	
 	if(typeof name != 'undefined'){
-		options = $and:[{"recipe.name":{ $regex:'/.*'+name+'.*/'}},{ "ativo": "true"}];
+
+		exports.retrieveByName(req,res);
+		 
 	} else{
-	    options = $and:[{ "ativo": "true"}];
+	    
+		exports.retrieveByAll(req,res);
 	}
-	
-*/
-	
-  
+ 
+ 
+}
+
+exports.retrieveByName = function(req,res) {
+
+	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
+	 	  
+	if(err) throw err;
+	   
+	var collection = db.collection('recipes');
+	  
+		collection.find($and:[{"recipe.name":{ $regex:'/.*'+name+'.*/'}},{ "ativo": "true"}]).toArray(function(err, docs) {
+			
+			if(err) throw err;
+			
+			var jsonData = {};
+			    jsonData["status"] = "success";
+			    jsonData["array"] = docs;
+			    
+			
+			
+			res.send(JSON.stringify(jsonData));
+			res.end();
+			db.close();
+			
+		})
+	})
+
+
+}
+
+exports.retrieveByAll = function(req,res) {
+
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
 	if(err) throw err;
@@ -142,5 +170,5 @@ exports.retrieveSite = function(req,res) {
 			
 		})
 	})
- 
+
 }
