@@ -104,16 +104,8 @@ exports.retrieveByTime = function(req,res) {
 
 exports.retrieveSite = function(req,res) {
  
- 	var name      = req.param("name");
+ exports.retrieveByAll(req,res);
  
-	if(typeof name != 'undefined'){
-
-		exports.retrieveByName(req,res);
-		 
-	} else{
-	    
-		exports.retrieveByAll(req,res);
-	}
  
  
 }
