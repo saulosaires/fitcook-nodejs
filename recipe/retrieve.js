@@ -123,10 +123,18 @@ exports.retrieveByName = function(req,res) {
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
 	if(err) throw err;
+	
+	   var name      = req.param("name");
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find($and:[{"recipe.name":{ $regex:'/.*'+name+'.*/'}},{ "ativo": "true"}]).toArray(function(err, docs) {
+	  var str1 = "/.*";
+ 
+var str3 = " .*/";
+var res = str1.concat(name,str3);
+	  
+	  
+		collection.find($and:[{"recipe.name":{ $regex:res}},{ "ativo": "true"}]).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
