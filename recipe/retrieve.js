@@ -103,38 +103,22 @@ exports.retrieveByTime = function(req,res) {
 }
 
 exports.retrieveSite = function(req,res) {
-	
-	/*
-	
-	var limit = req.param("limit");
-	var page  = req.param("page");
-	
-	if(typeof limit == 'undefined' || typeof page == 'undefined'){
-	 res.write('{status:error,msg:[page_and_limit_required]}');res.end();
-	}
-	
-	if(isNaN(limit) || isNaN(page)){
-		res.write('{status:error,msg:[page_and_limit_should_be_number]}');res.end();
-	}
-	
-	limit  = Number(limit);
-	page   = Number(page);
-	
 
-*/
   
  	var name      = req.param("name");
-	  
-  
-	var options=[];
+ 
+	var options;
 	
 	options.push({ "ativo": "true"}); 
 	
 	if(typeof name != 'undefined'){
-		options.push({"recipe.name":{ $regex:'/.*'+name+'.*/'}}); 
-	} 
+		options = $and:[{"recipe.name":{ $regex:'/.*'+name+'.*/'}},{ "ativo": "true"}];
+	} else{
+	    options = $and:[{ "ativo": "true"}];
+	}
 	
- console.log(options);
+
+	
   
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
@@ -142,7 +126,7 @@ exports.retrieveSite = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find($and:[options]).toArray(function(err, docs) {
+		collection.find(options).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
