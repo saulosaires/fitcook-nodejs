@@ -104,46 +104,6 @@ exports.retrieveByTime = function(req,res) {
 
 exports.retrieveSite = function(req,res) {
  
- exports.retrieveByAll(req,res);
- 
- 
- 
-}
-
-exports.retrieveByName = function(req,res) {
-
-	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
-	 	  
-	if(err) throw err;
-	
-	   var name      = req.param("name");
-	   
-	var collection = db.collection('recipes');
- 
-		collection.find($and:[{"recipe.name":{ $regex:"/.*"+name+" .*/"}},{ "ativo": "true"}]).toArray(function(err, docs) {
-			
-			if(err) throw err;
-			
-			var jsonData = {};
-			    jsonData["status"] = "success";
-			    jsonData["array"] = docs;
-			    
-			
-			
-			res.send(JSON.stringify(jsonData));
-			res.end();
-			db.close();
-			
-		})
-		
-		
-	})
-
-
-}
-
-exports.retrieveByAll = function(req,res) {
-
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
 	if(err) throw err;
@@ -166,5 +126,8 @@ exports.retrieveByAll = function(req,res) {
 			
 		})
 	})
-
+ 
+ 
 }
+ 
+ 
