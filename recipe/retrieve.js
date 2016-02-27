@@ -145,7 +145,7 @@ exports.retrieveSite = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find(options).toArray(function(err, docs) {
+		collection.find($and:[options]).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
