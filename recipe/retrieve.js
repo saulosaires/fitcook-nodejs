@@ -104,6 +104,8 @@ exports.retrieveByTime = function(req,res) {
 
 exports.retrieveSite = function(req,res) {
 	
+	/*
+	
 	var limit = req.param("limit");
 	var page  = req.param("page");
 	
@@ -118,6 +120,14 @@ exports.retrieveSite = function(req,res) {
 	limit  = Number(limit);
 	page   = Number(page);
 	
+
+*/
+ 
+ 	
+  
+	var options=[];
+	
+	options.push({"recipe.category":8});
   
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
