@@ -104,7 +104,7 @@ exports.retrieveByTime = function(req,res) {
 
 exports.retrieveSite = function(req,res) {
 
-  
+ /* 
  	var name      = req.param("name");
  
 	var options;
@@ -117,7 +117,7 @@ exports.retrieveSite = function(req,res) {
 	    options = $and:[{ "ativo": "true"}];
 	}
 	
-
+*/
 	
   
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
@@ -126,7 +126,7 @@ exports.retrieveSite = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find(options).toArray(function(err, docs) {
+		collection.find({ "ativo": "true"}).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
