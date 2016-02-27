@@ -109,7 +109,7 @@ exports.retrieveSite = function(req,res) {
  
 	var options;
 	
-	options.push({ "ativo": "true"}); 
+	
 	
 	if(typeof name != 'undefined'){
 		options = $and:[{"recipe.name":{ $regex:'/.*'+name+'.*/'}},{ "ativo": "true"}];
