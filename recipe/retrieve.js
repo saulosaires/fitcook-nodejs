@@ -127,14 +127,8 @@ exports.retrieveByName = function(req,res) {
 	   var name      = req.param("name");
 	   
 	var collection = db.collection('recipes');
-	  
-	  var str1 = "/.*";
  
-var str3 = " .*/";
-var res = str1.concat(name,str3);
-	  
-	  
-		collection.find($and:[{"recipe.name":{ $regex:res}},{ "ativo": "true"}]).toArray(function(err, docs) {
+		collection.find($and:[{"recipe.name":{ $regex:"/.*"+name+" .*/"}},{ "ativo": "true"}]).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
@@ -149,6 +143,8 @@ var res = str1.concat(name,str3);
 			db.close();
 			
 		})
+		
+		
 	})
 
 
