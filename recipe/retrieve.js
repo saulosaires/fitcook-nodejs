@@ -137,7 +137,7 @@ exports.retrieveSite = function(req,res) {
 		options.push({"recipe.name":{ $regex:'/.*'+name+'.*/'}}); 
 	} 
 	
- 
+ console.log(options);
   
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
