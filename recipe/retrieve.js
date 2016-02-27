@@ -124,10 +124,20 @@ exports.retrieveSite = function(req,res) {
 */
  
  	
+ 
+  
+ 	var name      = req.param("name");
+	  
   
 	var options=[];
 	
-	options.push({"recipe.category":8});
+	options.push({ "ativo": "true"}); 
+	
+	if(typeof name != 'undefined'){
+		options.push({"recipe.name":{ $regex:'/.*'+name+'.*/'}}); 
+	} 
+	
+ 
   
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
@@ -135,7 +145,7 @@ exports.retrieveSite = function(req,res) {
 	   
 	var collection = db.collection('recipes');
 	  
-		collection.find({ "ativo": "true"}).toArray(function(err, docs) {
+		collection.find(options).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
