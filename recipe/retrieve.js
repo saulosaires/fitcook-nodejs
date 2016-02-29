@@ -157,7 +157,7 @@ exports.retrieveAll = function(req,res) {
 	var collection = db.collection('recipes');
 	
 	  
-		collection.find({  $and: [{"recipe.name":{ $regex:"/.*"+name+".*/"}},{ "ativo": "true"}]}).toArray(function(err, docs) {
+		collection.find({  $and: [{"recipe.name":{ $regex:/.*+name+.*/}},{ "ativo": "true"}]}).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
