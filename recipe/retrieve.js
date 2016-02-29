@@ -148,6 +148,7 @@ exports.retrieveAll = function(req,res) {
  
 	var name  = req.param("name");
  
+ 
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
 	if(err) throw err;
