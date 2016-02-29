@@ -153,7 +153,7 @@ exports.retrieveAll = function(req,res) {
 	 	  
 	if(err) throw err;
 	   
-	   console.log(new RegExp("/^"+name+"/^"));
+	   console.log(new RegExp(name,'i'));
 	   
 	var collection = db.collection('recipes');
 	
