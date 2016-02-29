@@ -152,7 +152,7 @@ exports.retrieveAll = function(req,res) {
 	 	  
 	if(err) throw err;
 	   
-	   console.log("/.*"+name+".*/");
+	   console.log(/.*name.*/);
 	   
 	var collection = db.collection('recipes');
 	
