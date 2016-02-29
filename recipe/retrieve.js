@@ -152,12 +152,12 @@ exports.retrieveAll = function(req,res) {
 	 	  
 	if(err) throw err;
 	   
-	   console.log(/.* name .*/);
+	   console.log(new RegExp('/.*'+name+'.*/'));
 	   
 	var collection = db.collection('recipes');
 	
 	  
-		collection.find({  $and: [{"recipe.name":{ $regex:/.* name .*/}},{ "ativo": "true"}]}).toArray(function(err, docs) {
+		collection.find({  $and: [{"recipe.name":{ $regex:new RegExp('/.*'+name+'.*/')}},{ "ativo": "true"}]}).toArray(function(err, docs) {
 			
 			if(err) throw err;
 			
