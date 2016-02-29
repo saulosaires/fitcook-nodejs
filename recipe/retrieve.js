@@ -104,6 +104,21 @@ exports.retrieveByTime = function(req,res) {
 
 exports.retrieveSite = function(req,res) {
  
+	var name  = req.param("name");
+ 
+	if(typeof name == 'undefined'){
+	 exports.retrieveAll(req,res);
+	}else{
+	
+	 exports.retrieveAll(req,res);
+	}
+
+ 
+ 
+}
+ 
+exports.retrieveAll = function(req,res) {
+ 
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
 	if(err) throw err;
@@ -126,8 +141,6 @@ exports.retrieveSite = function(req,res) {
 			
 		})
 	})
- 
- 
-}
- 
+
+} 
  
