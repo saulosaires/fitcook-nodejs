@@ -152,8 +152,7 @@ exports.retrieveAll = function(req,res) {
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 	 	  
 	if(err) throw err;
-	   
-	   console.log(new RegExp(name,'i'));
+
 	   
 	var collection = db.collection('recipes');
 	
