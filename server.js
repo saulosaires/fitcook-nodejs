@@ -48,11 +48,11 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   });
   
   app.get('/api/dbretrieve', function (req,res,next) {
-	recipe.retrieveBySeason(req,res);
+	db.retrieveBySeason(req,res);
   }); 
   
   app.get('/api/dbdelete', function (req,res,next) {
-	recipe.deletedb(req,res);
+	db.deletedb(req,res);
   }); 
  //***************************************
   
