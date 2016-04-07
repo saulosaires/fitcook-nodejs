@@ -5,6 +5,7 @@ var mean   = require('meanio');
 var url    = require('url');
 var cors   = require('cors');
 var recipe = require('./recipe/index');
+var db 	   = require('./db/index');
 var user   = require('./user/index');
 var jwt    = require('jsonwebtoken'); 
 
@@ -36,6 +37,26 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   app.get('/api/detailRecipe', function (req,res,next) {
 	recipe.retrieveById(req,res);
   });
+  
+ // DB ******************************************************
+   app.get('/api/dbcreate', function (req,res,next) {
+	db.create(req,res);
+  });  
+
+   app.get('/api/dbupdate', function (req,res,next) {
+	db.update(req,res);
+  });
+  
+  app.get('/api/dbretrieve', function (req,res,next) {
+	recipe.retrieveBySeason(req,res);
+  }); 
+  
+  app.get('/api/dbdelete', function (req,res,next) {
+	recipe.deletedb(req,res);
+  }); 
+ //***************************************
+  
+  
   
   // route middleware to verify a token
   app.use(function(req, res, next) {
