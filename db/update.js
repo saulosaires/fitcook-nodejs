@@ -19,7 +19,6 @@ exports.update = function(req,res) {
 	require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
 		if(err) throw err;
-
 		
 
 		var collection = db.collection('dbs');
