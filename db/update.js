@@ -25,7 +25,7 @@ exports.update = function(req,res) {
 		var collection = db.collection('dbs');
  
 		collection.update({_id:require('mongodb').ObjectID(id)} ,
-							{'ativo':'true','episode':episode,'time':new Date().getTime()}, 
+							{'ativo':'true','episode':JSON.parse( episode ),'time':new Date().getTime()}, 
 							function(err, result) {
 							
 			if(err) throw err;
