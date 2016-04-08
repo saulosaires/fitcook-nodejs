@@ -50,6 +50,9 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
   app.get('/api/dbretrieve', function (req,res,next) {
 	db.retrieveBySeason(req,res);
   }); 
+    app.get('/api/dbretrieveID', function (req,res,next) {
+	db.retrieveByID(req,res);
+  }); 
   
   app.get('/api/dbdelete', function (req,res,next) {
 	db.deletedb(req,res);

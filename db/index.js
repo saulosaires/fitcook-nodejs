@@ -13,6 +13,12 @@ exports.update = function(req,res) {
  exports.retrieveBySeason = function(req,res) {
 	return db_retrieve.retrieveBySeason(req,res);
 }
+
+ exports.retrieveByID = function(req,res) {
+	return db_retrieve.retrieveByID(req,res);
+}
+
+
  
  exports.deletedb = function(req,res) {
 	return db_delete.deletedb(req,res);
