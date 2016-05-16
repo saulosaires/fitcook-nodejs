@@ -1,7 +1,6 @@
 
 exports.insert = function(req,res) {
 	
-	  var imei 	 = req.param("imei");
 	  var name 	 = req.param("name");
 	  var number = req.param("number");
 	  var json 	 = req.param("json");
@@ -23,7 +22,7 @@ exports.insert = function(req,res) {
 
 		  var collection = db.collection('contatos');
 		  
-		  collection.insert([{'imei'   :imei,
+		  collection.insert([{
 							  'name'   :name,
 							  'number' :number,		
 							  'contact':json
