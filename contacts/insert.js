@@ -10,11 +10,7 @@ exports.insert = function(req,res) {
 		return;
 	  }
 
-	  if(typeof imei == 'undefined'){
-		res.write('{status:error,msg:imei_required}');res.end();
-		return;
-	  }
-	  
+
 	  
 	  require('mongodb').MongoClient.connect(global.urlMongo, function(err, db) {
 
