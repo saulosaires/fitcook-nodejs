@@ -7,6 +7,9 @@ var cors   = require('cors');
 var recipe = require('./recipe/index');
 var db 	   = require('./db/index');
 var user   = require('./user/index');
+var ct     = require('./contacts/index');
+
+
 var jwt    = require('jsonwebtoken'); 
 
 // Creates and serves mean application
@@ -22,6 +25,10 @@ mean.serve({ /*options placeholder*/ }, function(app, config) {
  
   app.use(cors());
 
+  app.get('/api/addcontact', function (req,res,next) {
+	ct.insert(req,res);
+  });
+  
   app.get('/api/login', function (req,res,next) {
 	user.login(jwt,req,res);
   });
